@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Thêm lịch chiếu mới</h2>
+<form action="/showtimes/add" method="post" th:object="${showtime}">
+    <label>Phim:</label>
+    <select th:field="*{movie}">
+        <option th:each="m : ${movies}" th:value="${m}" th:text="${m.title}"></option>
+    </select><br>
+
+    <label>Phòng chiếu:</label>
+    <select th:field="*{screenRoom}">
+        <option th:each="r : ${screenRooms}" th:value="${r}" th:text="${r.name}"></option>
+    </select><br>
+
+    <label>Giờ bắt đầu:</label>
+    <input type="datetime-local" th:field="*{startTime}" /><br>
+
+    <label>Giờ kết thúc:</label>
+    <input type="datetime-local" th:field="*{endTime}" /><br>
+
+    <label>Số ghế trống:</label>
+    <input type="number" th:field="*{numberSeatEmpty}" /><br>
+
+    <button type="submit">Thêm</button>
+</form>
+<a href="/showtimes">Quay lại</a>
+</body>
+</html>

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ra.session_02.entity.Showtime;
 import ra.session_02.repository.ShowtimeRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,5 +38,9 @@ public class ShowtimeService implements IService<Showtime, Long> {
     @Override
     public void delete(Long id) {
         showtimeRepository.deleteById(id);
+    }
+
+    public List<Showtime> findByFilters(Long movieId, Long screenRoomId, LocalDate date) {
+        return showtimeRepository.searchByFilters(movieId, screenRoomId, date);
     }
 }
